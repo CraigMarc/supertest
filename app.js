@@ -1,3 +1,4 @@
+/*
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -37,5 +38,18 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+module.exports = app;*/
+
+//// app.js
+const express = require("express");
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+
+const indexRouter = require("./index");
+app.use("/", indexRouter);
+
+app.listen(3000, () => console.log("running"));
 
 module.exports = app;
